@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Страница с записями</h1>
+</header>
+<div class="grid-container">
+    <div class="grid-item">
+        <h2>Users</h2>
+        <ul>
+            <li th:each="user : ${users}">
+                <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getEmail()}">user</a>
+            </li>
+        </ul>
+        <button><a th:href="@{/new/user}">Create New User</a></button>
+    </div>
+
+    <div class="grid-item">
+        <h2>Comments</h2>
+        <ul>
+            <li th:each="comment : ${comments}">
+                <a th:href="@{/comment/{id}(id=${comment.getId()})}" th:text="${comment.getUrlPhoto()}">comment</a>
+            </li>
+        </ul>
+        <button><a href="/new?model=comment">Create New Comment</a></button>
+    </div>
+
+    <div class="grid-item">
+        <h2>Friends</h2>
+        <ul>
+            <li th:each="friendship : ${friends}">
+                <a th:href="@{/friendship/{id}(id=${friendship.getId()})}" th:text="${friendship.getStatus()}">friend</a>
+            </li>
+        </ul>
+        <button><a href="/new?model=friendship">Create New Friendship</a></button>
+    </div>
+
+    <div class="grid-item">
+        <h2>Messages</h2>
+        <ul>
+            <li th:each="message : ${messages}">
+                <a th:href="@{/message/{id}(id=${message.getId()})}">message</a>
+            </li>
+        </ul>
+        <button><a href="/new?model=message">Create New Message</a></button>
+    </div>
+
+    <div class="grid-item">
+        <h2>Posts</h2>
+        <ul>
+            <li th:each="post : ${posts}">
+                <a th:href="@{/post/{id}(id=${post.getId()})}">post</a>
+            </li>
+        </ul>
+        <button><a href="/new?model=post">Create New Post</a></button>
+    </div>
+</div>
+</body>
+</html>

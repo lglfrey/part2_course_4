@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Model</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div th:if="${models == 'user'}">
+    <!-- Разметка для создания нового пользователя -->
+    <form th:action="'/' + ${entity.id} + '/edit'">
+        <div class="new-user-form">
+            <input type="hidden" value="user" name="modelN"/>
+            <p>User ID: <input type="text" name="ID" th:value="${entity.id}"/></p>
+            <p>Username: <input type="text" name="Value1Name" th:value="${entity.Username}"></p>
+            <p>Email: <input type="text" name="Value2Name" th:value="${entity.Email}"/></p>
+            <p>Password: <input type="text" name="Value3Name" th:value="${entity.Password}"/></p>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <form th:method="DELETE" th:action="@{'/' + ${entity.id} + '/delete'}">
+        <div class="new-user-form">
+            <input type="submit" value="Delete"/>
+            <input type="hidden" value="user" name="modelN"/>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div th:if="${models == 'comment'}">
+    <div class="_subtitle">Comment Details:</div>
+    <p>Comment ID: <span th:text="${entity.idComment}"></span></p>
+    <p>Content: <span th:text="${entity.content}"></span></p>
+    <p>URL Photo: <span th:text="${entity.urlPhoto}"></span></p>
+    <p>Timestamp: <span th:text="${entity.timestamp}"></span></p>
+</div>
+
+<div th:if="${models == 'friendship'}">
+    <div class="_subtitle">Friendship Details:</div>
+    <p>Friendship ID: <span th:text="${entity.idFriendship}"></span></p>
+    <p>Username: <span th:text="${entity.username}"></span></p>
+    <p>URL Photo: <span th:text="${entity.urlPhoto}"></span></p>
+    <p>Status: <span th:text="${entity.status}"></span></p>
+</div>
+
+<div th:if="${models == 'message'}">
+    <div class="_subtitle">Message Details:</div>
+    <p>Message ID: <span th:text="${entity.idMessage}"></span></p>
+    <p>Content: <span th:text="${entity.content}"></span></p>
+    <p>URL Photo: <span th:text="${entity.urlPhoto}"></span></p>
+    <p>Timestamp: <span th:text="${entity.timestamp}"></span></p>
+</div>
+
+<div th:if="${models == 'post'}">
+    <div class="_subtitle">Post Details:</div>
+    <p>Post ID: <span th:text="${entity.idPost}"></span></p>
+    <p>Content: <span th:text="${entity.content}"></span></p>
+    <p>URL Photo: <span th:text="${entity.urlPhoto}"></span></p>
+    <p>Timestamp: <span th:text="${entity.timestamp}"></span></p>
+</div>
+
+
+</body>
+</html>

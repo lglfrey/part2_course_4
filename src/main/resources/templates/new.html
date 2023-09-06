@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 class="main_title _title">New Model</h1>
+
+<form th:action="@{/add}" method="post">
+    <input type="hidden" th:name="modelName" th:value="${modelName}" />
+
+    <div th:if="${modelName == 'user'}">
+        <form th:action="@{/add}" method="post" th:object="${modelObject}">
+            <div class="_subtitle">User Details:</div>
+            <p>rdtfgyu</p>
+            <input type="hidden" name="ID" value="0"/>
+            <input type="hidden" name="Value1Name" value="Str"/>
+            <input type="hidden" name="Value2Name" value="Str"/>
+            <input type="hidden" name="Value3Name" value="Str"/>
+            <input type="hidden" name="ModelName" value="user"/>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Поля ввода для модели Person -->
+    <div th:if="${modelName == 'comment'}">
+        <div class="_subtitle">Person Details:</div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" /><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" /><br>
+
+        <label for="patronymic">Patronymic:</label>
+        <input type="text" id="patronymic" name="patronymic" /><br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" /><br>
+    </div>
+
+    <!-- Поля ввода для модели Job -->
+    <div th:if="${modelName == 'friendship'}">
+        <div class="_subtitle">Job Details:</div>
+        <label for="jobName">Name:</label>
+        <input type="text" id="jobName" name="jobName" /><br>
+
+        <label for="jobType">Type:</label>
+        <input type="text" id="jobType" name="jobType" /><br>
+
+        <label for="slogan">Slogan:</label>
+        <input type="text" id="slogan" name="slogan" /><br>
+
+        <label for="employees">Employees:</label>
+        <input type="text" id="employees" name="employees" /><br>
+
+        <label for="budget">Budget:</label>
+        <input type="text" id="budget" name="budget" /><br>
+    </div>
+
+    <!-- Поля ввода для модели Pet -->
+    <div th:if="${modelName == 'message'}">
+        <div class="_subtitle">Pet Details:</div>
+        <label for="petName">Name:</label>
+        <input type="text" id="petName" name="petName" /><br>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" /><br>
+
+        <label for="petType">Type:</label>
+        <input type="text" id="petType" name="petType" /><br>
+
+        <label for="petAge">Age:</label>
+        <input type="text" id="petAge" name="petAge" /><br>
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" /><br>
+    </div>
+
+    <!-- Поля ввода для модели Transport -->
+    <div th:if="${modelName == 'post'}">
+        <div class="_subtitle">Transport Details:</div>
+        <label for="transportType">Name:</label>
+        <input type="text" id="transportType" name="transportType" /><br>
+
+        <label for="company">Type:</label>
+        <input type="text" id="company" name="company" /><br>
+
+        <label for="model">Slogan:</label>
+        <input type="text" id="model" name="model" /><br>
+
+        <label for="series">Employees:</label>
+        <input type="text" id="series" name="series" /><br>
+
+        <label for="color">Budget:</label>
+        <input type="text" id="color" name="color" /><br>
+    </div>
+
+    <!-- Кнопка для добавления элемента в модель
+    <button type="submit">Add</button>-->
+</form>
+<div th:if="${param.model == 'user'}">
+    <!-- Разметка для создания нового пользователя -->
+    <form th:action="@{'/new?model=user'}" th:method="post" th:object="${modelObject}">
+        <!-- Поля для создания нового пользователя -->
+        <label>Username: <input type="text" th:field="*{username}" /></label><br>
+        <label>Email: <input type="text" th:field="*{email}" /></label><br>
+        <label>Password: <input type="password" th:field="*{password}" /></label><br>
+        <!-- Добавьте другие поля для модели User, если необходимо -->
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+<div th:if="${param.model == 'comment'}">
+    <!-- Разметка для создания нового комментария -->
+    <form th:action="@{'/new?model=comment'}" th:method="post" th:object="${modelObject}">
+        <!-- Поля для создания нового комментария -->
+        <label>Content: <input type="text" th:field="*{content}" /></label><br>
+        <label>URL Photo: <input type="text" th:field="*{urlPhoto}" /></label><br>
+        <!-- Добавьте другие поля для модели Comment, если необходимо -->
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+</body>
+</html>
